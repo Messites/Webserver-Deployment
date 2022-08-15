@@ -1,0 +1,27 @@
+Step 1: Make sure Docker is installed on the OS
+$whichdocker
+$docker--version
+$apt update && apt install docker.io -y => to update the OS and install
+Docker
+
+Step 2:Create a directory and a Dockerfile in it, which you will edit following the requirements from the Assignment
+– $mkdir dockerfile
+– $cd dockerfile
+– $git clone <source_of_code>
+– $cdHelloworld
+– $sudo nano Dockerfile to add the following lines or use the script I've provided:
+
+FROM ubuntu:18.04
+RUN apt update
+RUN apt install apache2
+COPY index.html /var/www/html/
+ENTRYPOINT apachectl -D FOREGROUND ENV name EmmanuelDevops
+
+Step 3: Build the Dockerfile
+$sudo docker build . -t app
+
+Step 4: Run the Dockerfile
+$sudo docker run -itd -p 8000:80 app
+
+Step 5: Verify
+On the browser, type <IPV4x.x.x.x>:8000
